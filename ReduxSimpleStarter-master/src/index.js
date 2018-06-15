@@ -6,7 +6,7 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AN API KEY';
+const API_KEY = 'AIzaSyAEy8jNOTRXZFssIAbQs96MDUKlgNggSKY';
 
 // the most parent component should fetch the data
 
