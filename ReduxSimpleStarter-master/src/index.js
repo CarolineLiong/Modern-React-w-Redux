@@ -6,7 +6,7 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AIzaSyAEy8jNOTRXZFssIAbQs96MDUKlgNggSKY';
+const API_KEY = 'AN API KEY';
 
 // the most parent component should fetch the data
 
@@ -59,7 +59,7 @@ class App extends Component {
 
   }
   render() {
-    //debounce takes the inner function that and only run it every 300 miliseconds 
+    //debounce takes the inner function that and only run it every 300 miliseconds
     const videoSearch  = _.debounce((term)=> {this.videoSearch(term)}, 300)
     return (
       //passing videos into VideoList
