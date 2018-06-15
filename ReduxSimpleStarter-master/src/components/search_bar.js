@@ -25,10 +25,11 @@ class SearchBar extends Component {
       // when the input in the search bar changes, change what shows in the value of the input: ____
       // value = {this.state.term} is a controlled component that's only changed by the state
       //the state is change through onChange
-      <div>
+      //className refers to the search-bar variable in the css file
+      <div className="search-bar">
         <input
           value = {this.state.term}
-          onChange={event => this.setState({ term: event.target.value})} />
+          onChange={event => this.onInputChange(event.target.value)} />
       </div>
     );
   }
@@ -39,7 +40,10 @@ class SearchBar extends Component {
 //    console.log(event.target.value)
 
   //}
-
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
+  }
 }
 
 //if we import SearchBar in another file, it'll get the component above
