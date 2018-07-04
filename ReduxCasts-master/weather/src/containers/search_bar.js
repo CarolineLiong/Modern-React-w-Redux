@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchWeather } from "../actions/index";
 
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,9 @@ class SearchBar extends Component {
     this.setState({ term: "" });
   }
 
+  //"input group" is from boostrap
+  //class names are from bootstrap documentation
+  //span wraps a submit button
   render() {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">

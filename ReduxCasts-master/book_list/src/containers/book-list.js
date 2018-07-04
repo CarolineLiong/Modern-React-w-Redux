@@ -1,3 +1,4 @@
+// {} is just one property 
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectBook } from "../actions/index";
@@ -27,6 +28,7 @@ class BookList extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   // inside of BookList
@@ -40,6 +42,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, the result shoudl be passed
   // to all of our reducers
+  // dispatch contains the result of the action which is passed to the reducers
   return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
 
