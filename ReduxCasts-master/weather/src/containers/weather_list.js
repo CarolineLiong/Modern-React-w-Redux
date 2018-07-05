@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import Chart from "../components/chart";
 import GoogleMap from "../components/google_map";
 
+
+//weather is an array (see video 62)
 class WeatherList extends Component {
   renderWeather(cityData) {
     const name = cityData.city.name;
+    //temps is an array of temperatures of a particular city
     const temps = cityData.list.map(weather => weather.main.temp);
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
@@ -39,9 +42,9 @@ class WeatherList extends Component {
     );
   }
 }
-
+//weather in the parameter is just a constant variable called weather
 function mapStateToProps({ weather }) {
-  return { weather };
+  return { weather }; //same as {weather: weather}
 }
 
 export default connect(mapStateToProps)(WeatherList);

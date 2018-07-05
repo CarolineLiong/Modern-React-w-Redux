@@ -5,11 +5,14 @@ import { fetchWeather } from "../actions/index";
 
 
 class SearchBar extends Component {
+  //initialize the state in the constructor
+  //term = search term which is first empty
   constructor(props) {
     super(props);
 
     this.state = { term: "" };
 
+    //take the current version of onInputChange, bind it to the current instance of Search Bar's current method of onInputChange
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -19,6 +22,7 @@ class SearchBar extends Component {
   }
 
   onFormSubmit(event) {
+    //tell the browser to not submit the form and therefore not refresh the site itself
     event.preventDefault();
 
     // We need to go and fetch weather data
