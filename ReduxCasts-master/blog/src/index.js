@@ -18,6 +18,7 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 //Route must always have a path and component
 //if I go to this URL/path, show this particular component
 //Use Switch imponent to choose between the different routes
+//put most specific routes at the top of the list of switch children
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>

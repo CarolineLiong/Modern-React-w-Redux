@@ -15,9 +15,16 @@ class PostsNew extends Component {
   // {...field.input} - object that contains all the properties of the inputs
   // it replaces onChange = {field.input.onChange}, onFocus = {field.input.onFocus}, etc.
   renderField(field) {
-    
+
     //this shows the errors on the screen
+    //{touched ? error: ""} means if touched is true: return error, if false, return ""
+    //"form-group has-danger" makes the form outline red
+
+    //const {meta } = field; changes field.meta.touched && field.meta.error to meta.touched and meta.error
+    //ex: {x,y} = foo is equivalent to x= foo.x and y = foo.y
+    //{meta: {touched, error}} changes meta.touched and meta.error to touched and error
     const { meta: { touched, error } } = field;
+
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
 
     return (
@@ -30,7 +37,8 @@ class PostsNew extends Component {
       </div>
     );
   }
-
+  //which the info is submitted, we want to call an action creator called createPost
+  //this.props.history.push("/") navigates back to the big list of posts (the root) from Route in index.js
   onSubmit(values) {
     this.props.createPost(values, () => {
       this.props.history.push("/");
@@ -38,8 +46,18 @@ class PostsNew extends Component {
   }
   //component prop interacts directly w/ the user - we want to have cotnrol over how the field shows on the screen
   render() {
-    const { handleSubmit } = this.props;
 
+    //handlSubmit: a property from this
+    const { handleSubmit } = this.props;
+    //redux form handles the state of our form so it handles the values on it, validation
+    //but not posting form data to back end  - thats our responsibility
+    //onSubmit: involves code from reduxform and our own code
+    //handleSubmit takes in a function that we define and we pass it to handleSubmit
+    //handleSubmit runs the redux form side of things (like validation of the forms)
+    //it determines that if everything looks good, valid, ready to be submitted, then go ahead and call
+    //the callback (this.onSubmit.bind(this))
+    //we do .bind(this) because we're passing this.onSubmit as a callback function that will be executed
+    //in some different context outside of our component so we have access to 'this' as our component
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
@@ -65,6 +83,11 @@ class PostsNew extends Component {
 }
 //values contains all the values that users entered into the form
 //the ___ in values.___ must be identical to the name in the fields above
+//there's 3 different states for our form for each field that we create:
+//pristine: how every single input is rendered by default (like when it first appears on the screen)
+//touched: the user has selected or focused an input and then focused out of the input
+//(done work on it and then considers it complete)
+
 function validate(values) {
   // console.log(values) -> { title: 'asdf', categories: 'asdf', content: 'asdf' }
 
@@ -88,6 +111,7 @@ function validate(values) {
 }
 //first argument is a function, which takes in several configurations
 //we'll use the form property -  "PostsNewForm" will be the name of the ReduxForm - it must be a unique string
+//this wires up reduxForm to the PostsNew component
 export default reduxForm({
   validate,
   form: "PostsNewForm"
