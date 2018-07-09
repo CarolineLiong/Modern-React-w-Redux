@@ -48,7 +48,10 @@ class App extends Component {
   videoSearch(term) {
     //start the search (data is a var name)
     //videos is the list of videos that we got from the search
+    //the second videos call in the comments below is not a keyword - its a variable name - could be oranges
+    //or something like that - but we use
     //the selectedVideo is the first searched video
+    //the second argument is a callback function - we will update the state with the new list of videos
     YTSearch({key: API_KEY, term: term}, (videos) =>  {
       //this.setState({ videos: videos}); is the same as
       this.setState({
@@ -62,7 +65,12 @@ class App extends Component {
     //debounce takes the inner function that and only run it every 300 miliseconds
     const videoSearch  = _.debounce((term)=> {this.videoSearch(term)}, 300)
     return (
-      //passing videos into VideoList
+      //passing videos from this.setState into the VideoList component
+      //passing props: videos = {this.state.videos} so videolist can get access to the new list of videos
+      //defined by the state - arrives as an object in the video_list component as props.videos
+
+      //within VideoList, we created a onVideoSelect function that's a property that takes in a selectedVideo 
+      //and makes it the current state
       <div>
         <SearchBar onSearchTermChange={videoSearch} />
         <VideoDetail video={this.state.selectedVideo}/>

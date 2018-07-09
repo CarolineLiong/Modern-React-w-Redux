@@ -8,9 +8,9 @@ import { FETCH_POSTS, FETCH_POST, DELETE_POST } from "../actions";
 //basically, fetch the objects from the original state and put them into this new one that's being returned
 export default function(state = {}, action) {
   switch (action.type) {
-    case DELETE_POST
+    case DELETE_POST:
       //look at the state object, it has a key of posts id (the action.payload), just drop it
-      //it returns a new state object with that post not present in the state anymore 
+      //it returns a new state object with that post not present in the state anymore
       return _.omit(state, action.payload);
     case FETCH_POST:
       //const post = action.payload.data;

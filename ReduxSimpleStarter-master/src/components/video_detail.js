@@ -1,3 +1,4 @@
+//VideoDetail doesn't need to keep track of states so just create a functional component 
 import React from 'react';
 
 const VideoDetail = ({video}) => {
