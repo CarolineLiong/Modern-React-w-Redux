@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class BookDetail extends Component {
+  //if we call this.state, we're not calling the application state
   render() {
     if (!this.props.book) {
       return <div>Select a book to get started.</div>;
@@ -19,6 +20,7 @@ class BookDetail extends Component {
 
 function mapStateToProps(state) {
   return {
+    //state.activeBook was made in our rootReducer in index.js
     book: state.activeBook
   };
 }
