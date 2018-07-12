@@ -6,7 +6,7 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AIzaSyAEy8jNOTRXZFssIAbQs96MDUKlgNggSKY';
+const API_KEY = '########';
 
 // the most parent component should fetch the data
 
@@ -69,7 +69,7 @@ class App extends Component {
       //passing props: videos = {this.state.videos} so videolist can get access to the new list of videos
       //defined by the state - arrives as an object in the video_list component as props.videos
 
-      //within VideoList, we created a onVideoSelect function that's a property that takes in a selectedVideo 
+      //within VideoList, we created a onVideoSelect function that's a property that takes in a selectedVideo
       //and makes it the current state
       <div>
         <SearchBar onSearchTermChange={videoSearch} />
